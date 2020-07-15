@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas#viewport {
+            border: 1px solid white;
+            width: 900px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="viewport"></canvas>
+</body>
+<script>
+    url = '/preview';
+    var canvas = document.getElementById('viewport'),
+        context = canvas.getContext('2d');
+
+    var img = new Image();
+    img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        context.drawImage(img, 0, 0, canvas.width, canvas.height);
+        refresh();
+    }
+
+    function refresh() {
+        img.src = url + '?r=' + Math.random();
+        console.log('a')
+    }
+
+    refresh();
+
+</script>
+</html>
